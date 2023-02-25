@@ -1,0 +1,141 @@
+_format_version: "1.1"
+
+services:
+
+- host: account_service
+  name: account_service
+  port: 3001
+  protocol: http
+  routes:
+  - name: signup
+    auth: false
+    paths:
+    - /api/signup
+    methods: 
+    - POST
+  - name: login
+    auth: false
+    paths:
+    - /api/login
+    methods: 
+    - POST
+  - name: update-account
+    auth: true
+    paths:
+    - /api/account/:identification
+    methods: 
+    - PUT
+  - name: list-users
+    auth: true
+    paths:
+    - /api/account
+    methods: 
+    - GET
+  - name: get-user
+    auth: true
+    paths:
+    - /api/account/:identification
+    methods: 
+    - GET
+  - name: delete-user
+    auth: true
+    paths:
+    - /api/account/:identification
+    methods: 
+    - DELETE
+  - name: create-admin
+    auth: true
+    paths:
+    - /api/account/admin
+    methods: 
+    - POST
+
+- host: measures_service
+  name: measures_service
+  port: 3002
+  protocol: http
+  routes:
+  - name: list-measures
+    auth: true
+    paths:
+    - /api/measures/:sensorIdentification/:page/:limit
+    methods: 
+    - GET
+
+- host: sensor_service
+  name: sensor_service
+  port: 3003
+  protocol: http
+  routes:
+  - name: create-sensor
+    auth: true
+    paths:
+    - /api/sensor
+    methods:
+    - POST
+  - name: update-sensor
+    auth: true
+    paths:
+    - /api/sensor/:sensorIdentification
+    methods:
+    - PUT
+  - name: list-sensors
+    auth: true
+    paths:
+    - /api/sensor
+    methods:
+    - GET
+  - name: get-sensor
+    auth: true
+    paths:
+    - /api/sensor/:sensorIdentification
+    methods:
+    - GET
+
+- host: receive_data_service
+  name: receive_data_service
+  port: 3004
+  protocol: http
+  routes:
+  - name: save-measure
+    auth: false
+    paths:
+    - /api/receive/measure
+    methods: 
+    - POST
+
+- host: device_service
+  name: device_service
+  port: 3005
+  protocol: http
+  routes:
+  - name: create-device
+    auth: true
+    paths:
+    - /api/device
+    methods: 
+    - POST
+  - name: update-device
+    auth: true
+    paths:
+    - /api/device
+    methods: 
+    - PUT
+  - name: get-device
+    auth: true
+    paths:
+    - /api/device/:deviceIdentification
+    methods: 
+    - GET
+  - name: list-devices
+    auth: true
+    paths:
+    - /api/device/list/:deviceTenantId
+    methods: 
+    - GET
+  - name: delete-device
+    auth: true
+    paths:
+    - /api/device/:deviceIdentification
+    methods: 
+    - DELETE
