@@ -55,7 +55,7 @@ const Proxy = {
             break
           default:
             console.error(
-              `mid_api_gateway/api_proxy.js/build/Error - \nERROR: HTTP Method '${route.methods[0]}' not tracked!\n`
+              `api_gateway_service/proxy.ts/build/Error - \nERROR: HTTP Method '${route.methods[0]}' not tracked!\n`
             )
         }
       })

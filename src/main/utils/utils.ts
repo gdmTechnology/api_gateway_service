@@ -17,7 +17,7 @@ export const Utils = {
         } catch (error) {
             const responseError = Constants.ERROR_YAML_FILE
             responseError.message = error
-            console.error('mid_api_gateway/utils.js/readApiDoc/ERROR_YAML_FILE', responseError)
+            console.error('api_gateway_service/utils.ts/readApiDoc/ERROR_YAML_FILE', responseError)
             return responseError
         }
     },
@@ -25,13 +25,13 @@ export const Utils = {
     checkJWT(req, res, next) {
         const token = req.headers['x-access-token']
         if (!token) {
-            console.error('mid_api_gateway/utils.js/checkJWT/ValidationError - No Token provided!')
+            console.error('api_gateway_service/utils.ts/checkJWT/ValidationError - No Token provided!')
             return res.status(401).json({ auth: false, message: 'No token provided.' })
         }
 
         jwt.verify(token, env.jwtSecret, (err, decoded) => {
             if (err) {
-                console.error('mid_api_gateway/utils.js/checkJWT/ValidationError - Failed to authenticate token!')
+                console.error('api_gateway_service/utils.ts/checkJWT/ValidationError - Failed to authenticate token!')
                 return res.status(500).json({ auth: false, message: 'Failed to authenticate token.' })
             }
             req.headers.tenantId = decoded.tenantId
