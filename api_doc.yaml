@@ -139,3 +139,33 @@ services:
     - /api/device/:deviceIdentification
     methods: 
     - DELETE
+
+- host: actuator_service
+  name: actuator_service
+  port: 3006
+  protocol: http
+  routes:
+  - name: create-actuator
+    auth: true
+    paths:
+    - /api/actuator
+    methods:
+    - POST
+  - name: update-actuator
+    auth: true
+    paths:
+    - /api/actuator/:actuatorIdentification
+    methods:
+    - PUT
+  - name: list-actuators
+    auth: true
+    paths:
+    - /api/actuator
+    methods:
+    - GET
+  - name: get-actuator
+    auth: true
+    paths:
+    - /api/actuator/:actuatorIdentification
+    methods:
+    - GET
