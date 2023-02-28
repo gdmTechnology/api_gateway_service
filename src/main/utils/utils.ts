@@ -34,8 +34,6 @@ export const Utils = {
                 console.error('api_gateway_service/utils.ts/checkJWT/ValidationError - Failed to authenticate token!')
                 return res.status(500).json({ auth: false, message: 'Failed to authenticate token.' })
             }
-            req.headers.tenantId = decoded.tenantId
-            delete req.headers['x-access-token']
             console.info('Successfully validated token!')
             next()
         })
