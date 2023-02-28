@@ -82,7 +82,7 @@ services:
   - name: list-sensors
     auth: true
     paths:
-    - /api/sensor
+    - /api/sensor/list/:sensorTenantId
     methods:
     - GET
   - name: get-sensor
