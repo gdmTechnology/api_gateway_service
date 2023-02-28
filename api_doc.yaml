@@ -160,7 +160,7 @@ services:
   - name: list-actuators
     auth: true
     paths:
-    - /api/actuator
+    - /api/actuator/list/:actuatorTenantId
     methods:
     - GET
   - name: get-actuator
