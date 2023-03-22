@@ -169,3 +169,15 @@ services:
     - /api/actuator/:actuatorIdentification
     methods:
     - GET
+
+- host: command_service
+  name: command_service
+  port: 3007
+  protocol: http
+  routes:
+  - name: send-command
+    auth: true
+    paths:
+    - /api/send-command
+    methods:
+    - PUT
