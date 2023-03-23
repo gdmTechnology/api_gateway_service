@@ -172,7 +172,7 @@ services:
 
 - host: command_service
   name: command_service
-  port: 3007
+  port: 3008
   protocol: http
   routes:
   - name: send-command
