@@ -7,6 +7,12 @@ services:
   port: 3001
   protocol: http
   routes:
+  - name: create-tenant
+    auth: true
+    paths:
+    - /api/tenant
+    methods: 
+    - POST
   - name: signup
     auth: false
     paths:
