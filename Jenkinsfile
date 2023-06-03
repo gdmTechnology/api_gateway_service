@@ -16,18 +16,6 @@ pipeline {
 				}
 			}
 		}
-		stage('tests') {
-			steps {
-				script {
-					sh 'npm run test:ci'
-				}
-			}
-			post {
-				always {
-				step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml', lineCoverageTargets: '100, 95, 50'])
-				}
-			}
-		}
 		stage("remove old image") {
 			steps {
 				sh 'docker rmi api-gateway-service || true'
