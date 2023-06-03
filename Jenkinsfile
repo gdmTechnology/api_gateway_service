@@ -16,6 +16,11 @@ pipeline {
 				}
 			}
 		}
+		stage("stop container") {
+			steps {
+				sh 'docker stop api_gateway_service || true'
+			}
+		}
 		stage("remove old image") {
 			steps {
 				sh 'docker rmi api-gateway-service || true'
